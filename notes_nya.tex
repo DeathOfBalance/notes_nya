@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+%\usepackage{francais}
+\usepackage{amssymb, latexsym, amsmath,amsthm}
+\usepackage{polyglossia}
+\setmainlanguage{french} % pour compiler avec xelatex
+%\usepackage[francais]{babel}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{wrapfig}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{enumitem}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\theenumi}{\alph{enumi})}
+\usepackage{multicol}
+
+\usepackage[bottom]{footmisc}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\newlist{problemes}{enumerate}{1}
+\setlist[problemes]{label=\textbf{Problème \arabic*}, align=left}
+\setcounter{section}{-1}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remarque}
+
+\newcommand{\arccot}{\operatorname{arccot}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+
+\begin{document}
+
+\title{Notes pour 201-NYA (Calcul différentiel)}
+\author{Alex Provost}
+\maketitle
+
+\section{Révision}
+\section{Limites et continuité}
+\section{Dérivée}
+\section{Analyse et optimisation}
+\section{Fonctions transcendantes}
+
+Jusqu'à présent, nous n'avons considéré que des fonctions \emph{algébriques}, c'est-à-dire des fonctions construites à partir des opérations algébriques usuelles (somme, différence, produit, quotient, racines).
+%Par exemple, un polynôme est simplement une somme de produits de constantes et de fonctions identité. %todo : rephraser? exemples?
+Il existe cependant beaucoup d'autres fonctions importantes qui ne peuvent \emph{pas} s'exprimer simplement à l'aide des opérations algébriques usuelles. Ces fonctions sont dites \textbf{transcendantes} car elles << transcendent >> ou << dépassent >> l'algèbre.
+
+Nous allons nous intéresser particulièrement à deux grandes familles importantes de fonctions transcendantes : les fonctions \emph{trigonométriques} et les fonctions \emph{exponentielles}. Ces fonctions apparaissent naturellement dans une multitude d'applications variées.
+
+\subsection{Fonctions trigonométriques}
+
+\subsubsection{Notions élémentaires de trigonométrie}
+
+\subsubsection{Dérivées des fonctions trigonométriques}
+
+\subsubsection{Fonctions trigonométriques inverses}
+
+\subsubsection{Dérivées des fonctions trigonométriques inverses}
+
+\begin{ex}
+    Trouvons les extremums de $f(x) = 2x +10\arccot x$.
+\end{ex}
+\begin{ex}[Problème de maximisation de l'angle de Regiomontanus]
+    Une personne désire admirer un tableau accroché sur un mur au-dessus du niveau de ses yeux. On veut trouver la distance au mur qui maximise l'angle de vision du tableau (voir la figure).
+\end{ex}
+\subsection{Fonctions exponentielles}
+
+\subsubsection{Notions élémentaires de fonctions exponentielles et logarithmes}
+
+\subsubsection{Dérivées des fonctions exponentielles et logarithmes}
+
+\begin{ex}
+    Calculer la dérivée des fonctions suivantes :
+   \begin{multicols}{2}
+        \begin{enumerate}
+        \item $f(x) = 4^x - 5 \log_9 x$
+        \item $g(x) = 3e^x + 10x^3 \ln x$
+        \item $h(x) = e^{x^4 - 3x^2 + 9}$
+        \item $i(x) = \ln(x^{-4} + x^4)$
+    \end{enumerate}
+    \end{multicols}
+\end{ex}
+\begin{ex}
+    Soit la fonction $f(x) = e^{-\frac{x^2}{2}}$ (appelée \emph{fonction gaussienne} en l'honneur du mathématicien Carl Friedrich Gauss).
+    \begin{enumerate}
+        \item Faire une étude complète de $f$.
+        \item Trouver le rectangle d'aire maximale inscrit entre le graphe de $f$ et l'axe des $x$.
+    \end{enumerate}
+\end{ex}
+
+\subsubsection{Dérivation logarithmique}
+
+Depuis quelque temps déjà, nous savons comment dériver toute fonction de la forme $f(x) = x^r$, où l'exposant $r \in \R$ est une constante. Dans la sous-section précédente, nous avons vu comment dériver toute fonction de la forme $f(x) = b^x$, où la base $b > 0$ est n'importe quelle constante strictement positive. Nous pouvons même dériver toute fonction de la forme $f(x) = b(x)^r$ ou bien $f(x) = b^{r(x)}$, à l'aide de la dérivation en chaîne. Mais qu'arrive-t-il si la base \emph{et} l'exposant dépendent simultanément de $x$? Autrement dit, comment peut-on calculer la dérivée d'une fonction ayant la forme $f(x) = b(x)^{r(x)}$?
+
+L'idée derrière cette technique, appelée la \textbf{dérivation logarithmique}, est d'appliquer un logarithme à $f(x)$ avant d'effectuer la dérivée, dans le but d'abaisser l'exposant $r(x)$ devant le logarithme : \[ \ln(f(x)) = \ln(b(x)^{r(x)}) = r(x) \ln(b(x)). \] (On utilise le logarithme naturel parce qu'il est le plus simple à dériver.) En dérivant l'expression précédente (en chaîne à gauche, avec la règle du produit à droite), on obtient \[ \frac{f'(x)}{f(x)} = r'(x)\ln(b(x)) + r(x)\frac{b'(x)}{b(x)}, \] d'où l'expression un peu intimidante \[ f'(x) = f(x) \left(  r'(x)\ln(b(x)) + r(x)\frac{b'(x)}{b(x)} \right). \] En pratique, on ne se souvient jamais de la forme exacte de cette grosse expression, donc on refait plutôt le calcul à chaque fois. (Mais chapeau si vous arrivez à la retenir par cœur!)
+
+\begin{rem}
+    Il existe une approche alternative à cette méthode. Elle consiste à réécrire la fonction à base variable $f(x) = b(x)^{r(x)}$ sous la forme $f(x) = e^{\ln(b(x)^{r(x)})} = e^{r(x) \ln(b(x))}$. Ensuite, on dérive en chaîne pour obtenir $f'(x) = f(x)(r(x) \ln(b(x)))'$, ce qui donne la même expression que celle trouvée précédemment.
+\end{rem}
+
+\begin{ex}
+    Calculer la dérivée de $f(x) = x^{\sin x}$ avec la dérivation logarithmique.
+    
+    On pourrait directement appliquer la formule ci-dessus, mais refaisons le calcul dans ce cas particulier. On a $\ln(f(x)) = \sin x \ln x$, dont la dérivée fait $\cos(x) \ln x + \frac{\sin x}{x}$. Ainsi, la dérivée recherchée est $f'(x) = x^{\sin x}\left( \cos x \ln x + \frac{\sin x}{x} \right)$.
+\end{ex}
+\end{document}
